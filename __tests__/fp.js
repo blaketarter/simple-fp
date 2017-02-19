@@ -11,6 +11,26 @@ describe('fp', function() {
         expect(foo).toHaveProperty('length');
         expect(foo).toBeInstanceOf(Array);
     });
+    
+    it('doesnt pollute the Array prototype', function() {
+        const fpList = fp([]);
+
+        const instanceMethods = Object.keys(fp.prototype);
+
+        const staticMethods = Object.keys(fp);
+
+        for (let method of instanceMethods) {
+            if (Array.prototype[method]) {
+                expect(fp.prototype[method]).not.toBe(Array.prototype[method]);
+            }
+        }
+
+        for (let staticMethod of staticMethods) {
+            if (Array[staticMethod]) {
+                expect(fp[staticMethod]).not.toBe(Array[staticMethod]);
+            }
+        }
+    });
 
     it('copies the initial data correctly', function() {
         const initialData = [1, 2, 3];
