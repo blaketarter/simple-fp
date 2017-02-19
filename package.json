@@ -1,0 +1,14 @@
+{
+  "name": "fp",
+  "version": "0.0.1",
+  "description": "A simple, small, no dependeny functional programming library",
+  "main": "index.js",
+  "scripts": {
+    "test": "node node_modules/jest/bin/jest.js"
+  },
+  "author": "Blake Tarter <blakertarter@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^18.1.0"
+  }
+}
