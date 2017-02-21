@@ -1,0 +1,9 @@
+node_modules
+__tests__
+.eslintrc
+.npmignore
+.travis.yml
+.git*
+.npm-debug.log
+.eslintrc
+yarn.lock
