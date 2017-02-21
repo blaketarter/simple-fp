@@ -1,6 +1,6 @@
 {
   "name": "simple-fp",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A simple, small, no dependency functional programming library",
   "keywords": [
     "functional",
