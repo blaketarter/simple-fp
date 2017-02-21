@@ -91,6 +91,22 @@
     return newList;
   };
 
+  fp.prototype.pick = function pluck(properties) {
+    const newList = fp([]);
+
+    for (let i = 0, ii = this.length; i < ii; i += 1) {
+      let value = {};
+
+      for (let j = 0, jj = properties.length; j < jj; j += 1) {
+        value[properties[j]] = this[i][properties[j]];
+      }
+
+      newList.push(value);
+    }
+
+    return newList;
+  };
+
   fp.prototype.unique = function uniq() {
     const newList = fp([]);
 
