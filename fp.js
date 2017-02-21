@@ -1,25 +1,13 @@
 (function () {
   const root = this;
 
-  /* eslint-disable */
-  // Only works in Chrome and FireFox, does not work in IE:
-  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf
-  function setPrototypeOf(obj, proto) {
-    if (Object.setPrototypeOf) {
-      return Object.setPrototypeOf(obj, proto);
-    }
-
-    obj.__proto__ = proto;
-    return obj;
+  function fp(list) {
+    if (list instanceof fp) return list;
+    if (!(this instanceof fp)) return new fp(list);
+    this.push.apply(this, list);
   }
-  /* eslint-enable */
 
-  const fp = function fpFn(list) {
-    const initialList = list.slice(0);
-    return setPrototypeOf(initialList, fp.prototype);
-  };
-
-  fp.prototype = [];
+  fp.prototype = Object.create(Array.prototype);
 
   fp.prototype.forEach = function forEach(projectionFunction) {
     for (let i = 0, ii = this.length; i < ii; i += 1) {
