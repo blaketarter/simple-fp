@@ -1,4 +1,4 @@
-const fp = require('../index');
+const fp = require('../fp');
 
 describe('fp', function() {
     it('initializes without error', function() {

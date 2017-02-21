@@ -1,4 +1,4 @@
-const fp = require('../index');
+const fp = require('../fp');
 
 describe('unique', function() {
   it('returns the new array with no duplicate numbers', function() {

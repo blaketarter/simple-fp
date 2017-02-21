@@ -1,4 +1,4 @@
-const fp = require('../index');
+const fp = require('../fp');
 
 describe('pluck', function() {
   it('can get a value one level deep', function() {

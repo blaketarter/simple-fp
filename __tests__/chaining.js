@@ -1,4 +1,4 @@
-const fp = require('../index');
+const fp = require('../fp');
 
 describe('fp should be chainable', function() {
   it('forEach return value is chainable', function() {

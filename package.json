@@ -2,7 +2,7 @@
   "name": "simple-fp",
   "version": "0.0.1",
   "description": "A simple, small, no dependency functional programming library",
-  "main": "index.js",
+  "main": "fp.js",
   "scripts": {
     "test": "npm run lint && npm run jest",
     "jest": "node ./node_modules/jest/bin/jest.js",

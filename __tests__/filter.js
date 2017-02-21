@@ -1,4 +1,4 @@
-const fp = require('../index');
+const fp = require('../fp');
 
 describe('filter', function() {
   it('calls the predicate function on each item', function() {

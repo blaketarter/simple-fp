@@ -1,4 +1,4 @@
-const fp = require('../index');
+const fp = require('../fp');
 
 describe('map', function() {
   it('calls the projection function on each item', function() {
