@@ -84,6 +84,34 @@ fp.prototype.concatMap = function concatMap(projectionFunction) {
   return newList.concatAll();
 };
 
+fp.prototype.pluck = function pluck(...properties) {
+  const newList = fp([]);
+
+  for (let i = 0, ii = this.length; i < ii; i += 1) {
+    let value = this[i];
+
+    for (let j = 0, jj = properties.length; j < jj; j += 1) {
+      value = value[properties[j]];
+    }
+
+    newList.push(value);
+  }
+
+  return newList;
+};
+
+fp.prototype.unique = function uniq() {
+  const newList = fp([]);
+
+  for (let i = 0, ii = this.length; i < ii; i += 1) {
+    if (newList.indexOf(this[i]) < 0) {
+      newList.push(this[i]);
+    }
+  }
+
+  return newList;
+};
+
 fp.zip = function zip(leftList, rightList, combiner) {
   const newList = fp([]);
 
