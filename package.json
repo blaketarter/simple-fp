@@ -1,6 +1,6 @@
 {
   "name": "simple-fp",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A simple, small, no dependency functional programming library",
   "keywords": [
     "functional",
@@ -19,9 +19,9 @@
     "lint": "node ./node_modules/eslint/bin/eslint.js index.js"
   },
   "author": "Blake Tarter <blakertarter@gmail.com>",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/blaketarter/simple-fp"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blaketarter/simple-fp"
   },
   "license": "MIT",
   "devDependencies": {
