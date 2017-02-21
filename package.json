@@ -4,7 +4,8 @@
   "description": "A simple, small, no dependeny functional programming library",
   "main": "index.js",
   "scripts": {
-    "test": "node ./node_modules/jest/bin/jest.js",
+    "test": "npm run lint && npm run jest",
+    "jest": "node ./node_modules/jest/bin/jest.js",
     "lint": "node ./node_modules/eslint/bin/eslint.js index.js"
   },
   "author": "Blake Tarter <blakertarter@gmail.com>",
