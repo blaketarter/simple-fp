@@ -34,6 +34,16 @@
     return newList;
   };
 
+  fp.prototype.reject = function reject(predicateFunction) {
+    const newList = fp([]);
+    for (let i = 0, ii = this.length; i < ii; i += 1) {
+      if (!predicateFunction(this[i])) {
+        newList.push(this[i]);
+      }
+    }
+    return newList;
+  };
+
   fp.prototype.reduce = function reduce(combiner, initialValue) {
     let counter;
     let accumulatedValue;
@@ -53,6 +63,29 @@
     while (counter < this.length) {
       accumulatedValue = combiner(accumulatedValue, this[counter]);
       counter += 1;
+    }
+
+    return fp([accumulatedValue]);
+  };
+
+  fp.prototype.reduceRight = function reduceRight(combiner, initialValue) {
+    let counter = this.length - 1;
+    let accumulatedValue;
+
+    if (!this.length) {
+      return this;
+    }
+
+    if (initialValue == null) {
+      accumulatedValue = this[counter];
+      counter -= 1;
+    } else {
+      accumulatedValue = initialValue;
+    }
+
+    while (counter >= 0) {
+      accumulatedValue = combiner(accumulatedValue, this[counter]);
+      counter -= 1;
     }
 
     return fp([accumulatedValue]);
@@ -126,6 +159,16 @@
       }
     }
   };
+
+  fp.prototype.reverse = function reverse() {
+    const newList = fp([]);
+
+    for (let i = this.length - 1; i >= 0; i -= 1) {
+      newList.push(this[i]);
+    }
+
+    return newList;
+  }
 
   fp.zip = function zip(leftList, rightList, combiner) {
     const newList = fp([]);
