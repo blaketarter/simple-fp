@@ -24,6 +24,14 @@
     return newList;
   };
 
+  fp.prototype.take = function map(numberToTake) {
+    const newList = fp([]);
+    for (let i = 0; i < numberToTake; i += 1) {
+      newList.push(this[i]);
+    }
+    return newList;
+  };
+
   fp.prototype.filter = function filter(predicateFunction) {
     const newList = fp([]);
     for (let i = 0, ii = this.length; i < ii; i += 1) {
