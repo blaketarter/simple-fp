@@ -4,7 +4,7 @@
   "globals": {},
   "plugins": [],
   "rules": {
-    "no-extra-semi": 0,
+    "no-extra-semi": 0
   },
   "settings": {}
 }

@@ -14,6 +14,7 @@ import pick from './instance/pick';
 import unique from './instance/unique';
 import find from './instance/find';
 import reverse from './instance/reverse';
+import doEffect from './instance/do';
 
 import zip from './static/zip';
 
@@ -31,6 +32,7 @@ fp.prototype.pick = pick;
 fp.prototype.unique = unique;
 fp.prototype.find = find;
 fp.prototype.reverse = reverse;
+fp.prototype.do = doEffect;
 
 fp.zip = zip;
 

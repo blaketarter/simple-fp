@@ -6,8 +6,8 @@
 
 function fp$1(list) {
   if (list instanceof fp$1) return list;
-  if (!(this instanceof fp$1)) return new fp$1(list);
-  this.push.apply(this, list);
+  if (!(this instanceof fp$1)) return new fp$1(list); // eslint-disable-line new-cap
+  return this.push.apply(this, list); // eslint-disable-line prefer-spread
 }
 
 fp$1.prototype = Object.create(Array.prototype);
@@ -139,7 +139,7 @@ function pick(properties) {
   const newList = fp$1([]);
 
   for (let i = 0, ii = this.length; i < ii; i += 1) {
-    let value = {};
+    const value = {};
 
     for (let j = 0, jj = properties.length; j < jj; j += 1) {
       value[properties[j]] = this[i][properties[j]];
@@ -163,6 +163,7 @@ function unique() {
   return newList;
 }
 
+/* eslint-disable consistent-return */
 function find(predicateFunction) {
   for (let i = 0, ii = this.length; i < ii; i += 1) {
     if (predicateFunction(this[i])) {
@@ -170,6 +171,7 @@ function find(predicateFunction) {
     }
   }
 }
+/* eslint-enable consistent-return */
 
 function reverse() {
   const newList = fp$1([]);
@@ -179,6 +181,11 @@ function reverse() {
   }
 
   return newList;
+}
+
+function doEffect(effect) {
+  effect(this);
+  return this;
 }
 
 function zip(leftList, rightList, combiner) {
@@ -205,6 +212,7 @@ fp$1.prototype.pick = pick;
 fp$1.prototype.unique = unique;
 fp$1.prototype.find = find;
 fp$1.prototype.reverse = reverse;
+fp$1.prototype.do = doEffect;
 
 fp$1.zip = zip;
 
