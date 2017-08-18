@@ -1,6 +1,6 @@
 {
   "name": "simple-fp",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "A simple, small, no dependency functional programming library",
   "keywords": [
     "functional",
@@ -12,7 +12,7 @@
     "util",
     "fp"
   ],
-  "main": "fp.js",
+  "main": "./dist/fp.js",
   "scripts": {
     "build": "rollup src/fp.js --format umd --name fp --output dist/fp.js",
     "compress": "uglifyjs --compress -- dist/fp.js -o dist/fp.min.js",

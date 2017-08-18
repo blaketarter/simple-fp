@@ -188,11 +188,41 @@ function doEffect(effect) {
   return this;
 }
 
+function skip(numberToSkip) {
+  const newList = fp$1([]);
+  for (let i = numberToSkip; i < this.length; i += 1) {
+    newList.push(this[i]);
+  }
+  return newList;
+}
+
 function zip(leftList, rightList, combiner) {
   const newList = fp$1([]);
 
   for (let i = 0, ii = Math.min(leftList.length, rightList.length); i < ii; i += 1) {
     newList.push(combiner(leftList[i], rightList[i]));
+  }
+
+  return newList;
+}
+
+function range(from, to) {
+  const newList = fp$1([]);
+
+  if (from === to || to === undefined) {
+    newList.push(from);
+    return newList;
+  }
+
+  if (from < to) {
+    for (let i = from; i <= to; i += 1) {
+      newList.push(i);
+    }
+    return newList;
+  }
+
+  for (let i = from; i >= to; i -= 1) {
+    newList.push(i);
   }
 
   return newList;
@@ -213,8 +243,10 @@ fp$1.prototype.unique = unique;
 fp$1.prototype.find = find;
 fp$1.prototype.reverse = reverse;
 fp$1.prototype.do = doEffect;
+fp$1.prototype.skip = skip;
 
 fp$1.zip = zip;
+fp$1.range = range;
 
 return fp$1;
 

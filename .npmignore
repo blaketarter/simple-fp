@@ -9,3 +9,4 @@ examples
 .eslintrc
 yarn.lock
 coverage
+src
