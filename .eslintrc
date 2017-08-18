@@ -3,6 +3,8 @@
   "extends": "airbnb-base",
   "globals": {},
   "plugins": [],
-  "rules": {},
+  "rules": {
+    "no-extra-semi": 0,
+  },
   "settings": {}
 }

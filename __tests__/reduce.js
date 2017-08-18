@@ -66,4 +66,15 @@ describe('reduce', function() {
     expect(foo[1]).toBe(4);
     expect(foo[2]).toBe(1);
   });
+
+  it('returns an empty array if given an empty array', function() {
+    const foo = fp([]);
+    const combinerFunction = jest.fn(function(total, current) {
+      return total + current;
+    });
+
+    const bar = foo.reduce(combinerFunction);
+
+    expect(bar.length).toBe(0);
+  });
 });
