@@ -1,4 +1,4 @@
-const fp = require('../fp');
+const fp = require('../dist/fp');
 
 describe('concatAll', function() {
   it('returns the new flattened array', function() {

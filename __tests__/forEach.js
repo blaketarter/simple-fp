@@ -1,4 +1,4 @@
-const fp = require('../fp');
+const fp = require('../dist/fp');
 
 describe('forEach', function() {
   it('calls the projection function on each item', function() {

@@ -1,4 +1,4 @@
-const fp = require('../fp');
+const fp = require('../dist/fp');
 
 describe('pluck', function() {
   it('can get a value one level deep', function() {

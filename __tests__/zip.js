@@ -1,4 +1,4 @@
-const fp = require('../fp');
+const fp = require('../dist/fp');
 
 describe('zip', function() {
   it('calls the combiner function on each item when then arrays are the same length', function() {

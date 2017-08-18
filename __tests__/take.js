@@ -1,4 +1,4 @@
-const fp = require('../fp');
+const fp = require('../dist/fp');
 
 describe('take', function() {
   it('returns the new array of the right length', function() {

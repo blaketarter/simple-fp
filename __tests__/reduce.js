@@ -1,4 +1,4 @@
-const fp = require('../fp');
+const fp = require('../dist/fp');
 
 describe('reduce', function() {
   it('calls the combiner function on the last two items if no intial value was given', function() {

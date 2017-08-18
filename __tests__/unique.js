@@ -1,4 +1,4 @@
-const fp = require('../fp');
+const fp = require('../dist/fp');
 
 describe('unique', function() {
   it('returns the new array with no duplicate numbers', function() {

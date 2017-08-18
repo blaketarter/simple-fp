@@ -1,4 +1,4 @@
-const fp = require('../fp');
+const fp = require('../dist/fp');
 
 describe('reverse', function() {
   it('returns the array reversed', function() {

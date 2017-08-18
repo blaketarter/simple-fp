@@ -1,4 +1,4 @@
-const fp = require('../fp');
+const fp = require('../dist/fp');
 
 describe('concatMap', function() {
   it('returns the new flattened and projected array', function() {

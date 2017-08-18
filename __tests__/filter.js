@@ -1,4 +1,4 @@
-const fp = require('../fp');
+const fp = require('../dist/fp');
 
 describe('filter', function() {
   it('calls the predicate function on each item', function() {

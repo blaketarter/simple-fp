@@ -1,4 +1,4 @@
-const fp = require('../fp');
+const fp = require('../dist/fp');
 
 describe('map', function() {
   it('calls the projection function on each item', function() {

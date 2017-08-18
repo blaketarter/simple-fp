@@ -1,4 +1,4 @@
-const fp = require('../fp');
+const fp = require('../dist/fp');
 
 describe('fp should be chainable', function() {
   it('forEach return value is chainable', function() {
