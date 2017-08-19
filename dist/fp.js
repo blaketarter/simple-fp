@@ -196,6 +196,16 @@ function skip(numberToSkip) {
   return newList;
 }
 
+function compact() {
+  const newList = fp$1([]);
+  for (let i = 0, ii = this.length; i < ii; i += 1) {
+    if (this[i]) {
+      newList.push(this[i]);
+    }
+  }
+  return newList;
+}
+
 function zip(leftList, rightList, combiner) {
   const newList = fp$1([]);
 
@@ -260,6 +270,7 @@ fp$1.prototype.find = find;
 fp$1.prototype.reverse = reverse;
 fp$1.prototype.do = doEffect;
 fp$1.prototype.skip = skip;
+fp$1.prototype.compact = compact;
 
 fp$1.zip = zip;
 fp$1.range = range;

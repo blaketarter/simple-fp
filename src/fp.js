@@ -16,6 +16,7 @@ import find from './instance/find';
 import reverse from './instance/reverse';
 import doEffect from './instance/do';
 import skip from './instance/skip';
+import compact from './instance/compact';
 
 import zip from './static/zip';
 import range from './static/range';
@@ -37,6 +38,7 @@ fp.prototype.find = find;
 fp.prototype.reverse = reverse;
 fp.prototype.do = doEffect;
 fp.prototype.skip = skip;
+fp.prototype.compact = compact;
 
 fp.zip = zip;
 fp.range = range;
