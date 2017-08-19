@@ -19,6 +19,7 @@ import skip from './instance/skip';
 
 import zip from './static/zip';
 import range from './static/range';
+import concat from './static/concat';
 
 fp.prototype.forEach = forEach;
 fp.prototype.map = map;
@@ -39,5 +40,6 @@ fp.prototype.skip = skip;
 
 fp.zip = zip;
 fp.range = range;
+fp.concat = concat;
 
 export default fp;

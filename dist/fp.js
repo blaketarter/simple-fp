@@ -228,6 +228,22 @@ function range(from, to) {
   return newList;
 }
 
+function concat(...items) {
+  const newList = fp$1([]);
+
+  for (let i = 0, ii = items.length; i < ii; i += 1) {
+    if (!(items[i] instanceof Array)) {
+      newList.push(items[i]);
+    } else {
+      for (let j = 0, jj = items[i].length; j < jj; j += 1) {
+        newList.push(items[i][j]);
+      }
+    }
+  }
+
+  return newList;
+}
+
 fp$1.prototype.forEach = forEach;
 fp$1.prototype.map = map;
 fp$1.prototype.take = take;
@@ -247,6 +263,7 @@ fp$1.prototype.skip = skip;
 
 fp$1.zip = zip;
 fp$1.range = range;
+fp$1.concat = concat;
 
 return fp$1;
 
