@@ -14,9 +14,10 @@
   ],
   "main": "fp.js",
   "scripts": {
-    "test": "npm run lint && npm run jest",
-    "jest": "node ./node_modules/jest/bin/jest.js",
-    "lint": "node ./node_modules/eslint/bin/eslint.js index.js"
+    "build": "rollup src/index.js --output.format umd --name \"fp\" --output.file dist/index.js",
+    "build:watch": "rollup src/index.js --output.format umd --name \"fp\" --output.file dist/index.js -w",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "author": "Blake Tarter <blakertarter@gmail.com>",
   "repository": {
@@ -26,9 +27,12 @@
   "license": "MIT",
   "devDependencies": {
     "babel-eslint": "^7.1.1",
-    "eslint": "^3.15.0",
+    "eslint": "^4.16.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
-    "jest": "^18.1.0"
-  }
+    "eslint-plugin-jest": "^21.7.0",
+    "jest": "^18.1.0",
+    "rollup": "^0.55.1"
+  },
+  "dependencies": {}
 }
