@@ -1,6 +1,6 @@
 const { curry } = require('../dist');
 
-describe('curry', () => {
+describe.skip('curry', () => {
   const arity1 = (a) => a;
   const arity2 = (a, b) => a + b;
   const arity3 = (a, b, c) => a + b + c;
