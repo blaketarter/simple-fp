@@ -1,4 +1,5 @@
 import { reduce } from '../reduce/index';
+import { curry } from '../curry/index';
 
 interface projectionFn<T, U> {
   (x: T, y: number, z: T[]): U;
@@ -11,18 +12,9 @@ function _map<T, U>(projection: projectionFn<T, U>, data: T[]): U[] {
   }, [], data)
 };
 
-export function map<T, U>(projection: projectionFn<T, U>, data: T[]): U[];
-export function map<T, U>(projection: projectionFn<T, U>): (data: T[]) => U[];
-export function map<T, U>(projection: projectionFn<T, U>, data?: T[]): any {
-  switch (arguments.length) {
-    case 1:
-      return function curriedFn(data: T[]): U[] {
-        return _map(projection, data);
-      };
-    default:
-      return _map(projection, data);
-  }
-};
+interface mapFn {
+  <T, U>(projection: projectionFn<T, U>): (data: T[]) => U[];
+  <T, U>(projection: projectionFn<T, U>, data: T[]): U[];
+}
 
-// console.log(map(a => a + '!', ['hello', 'world']));
-// console.log(map(a => a + '!')(['hello', 'world']));
+export const map: mapFn = curry(_map, 2);

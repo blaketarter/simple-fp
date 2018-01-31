@@ -1,72 +1,59 @@
-// export const curry = (argCount, fn, argsList = []) => (
-//   (...args) => {
-//     const filteredArgs = args.filter(a => a !== undefined);
-//     if (filteredArgs.length < argCount) {
-//       return curry(argCount - filteredArgs.length, fn, argsList.concat(filteredArgs));
-//     }
-//     return fn(...[...argsList, ...filteredArgs]);
-//   }
-// );
-
 interface CurriedFn1<T1, R> {
   (): CurriedFn1<T1, R>
-  (x: T1): R;
+  (t1: T1): R;
 }
 
-interface CurriedFn2<T, U, R> {
-  (x: T, y: U): R;
-  (x: T): (y: U) => R;
+interface CurriedFn2<T1, T2, R> {
+  (): CurriedFn2<T1, T2, R>;
+  (t1: T1): CurriedFn1<T2, R>;
+  (t1: T1, t2: T2): R;
 }
 
-interface CurriedFn3<T, U, V, R> {
-  (x: T): CurriedFn2<U, V, R>;
-  (x: T, y: U): (z: V) => R;
-  (x: T, y: U, z: V): R;
+interface CurriedFn3<T1, T2, T3, R> {
+  (): CurriedFn3<T1, T2, T3, R>;
+  (t1: T1): CurriedFn2<T2, T3, R>;
+  (t1: T1, t2: T2): CurriedFn1<T3, R>;
+  (t1: T1, t2: T2, t3: T3): R;
 }
 
-export function curry2<T, U, R>(f: (x: T, y: U) => R): CurriedFn2<T, U, R> {
-  function curriedFn(x: T): (y: U) => R;
-  function curriedFn(x: T, y: U): R;
-  function curriedFn(x: T, y?: U): any {
-    switch (arguments.length) {
-      case 1:
-        return function (y: U): R {
-          return f(x, y);
-        }
-      case 2:
-        return f(x, y);
+interface CurriedFn4<T1, T2, T3,T4, R> {
+  (): CurriedFn4<T1, T2, T3, T4, R>;
+  (t1: T1): CurriedFn3<T2, T3, T4, R>;
+  (t1: T1, t2: T2): CurriedFn2<T3, T4, R>;
+  (t1: T1, t2: T2, t3: T3): CurriedFn1<T4, R>;
+  (t1: T1, t2: T2, t3: T3, t4: T4): R;
+}
+
+interface CurriedFn5<T1, T2, T3,T4, T5, R> {
+  (): CurriedFn5<T1, T2, T3, T4, T5, R>;
+  (t1: T1): CurriedFn4<T2, T3, T4, T5, R>;
+  (t1: T1, t2: T2): CurriedFn3<T3, T4, T5, R>;
+  (t1: T1, t2: T2, t3: T3): CurriedFn2<T4, T5, R>;
+  (t1: T1, t2: T2, t3: T3, t4: T4): CurriedFn1<T5, R>;
+  (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5): R;
+}
+
+function wrapCurry(fn: (...args: any[]) => any, argsToApply: number, appliedArgs: any[]): (...args: any[]) => any {
+  return (...args: any[]) => {
+    if (args.length === argsToApply) {
+      return fn.apply(this, [...appliedArgs, ...args]);
+    } else {
+      return wrapCurry.call(this, fn, argsToApply - args.length, [...appliedArgs, ...args]);
     }
-  }
-  return curriedFn;
+  };
 }
 
-export function curry3<T, U, V, R>(f: (x: T, y: U, z: V) => R): CurriedFn3<T, U, V, R> {
-  function curriedFn(x: T): CurriedFn2<U, V, R>;
-  function curriedFn(x: T, y: U): (z: V) => R;
-  function curriedFn(x: T, y: U, z: V): R;
-  function curriedFn(x: T, y?: U, z?: V): any {
-    switch (arguments.length) {
-      case 1:
-        return curry2(function (y: U, z: V): R {
-          return f(x, y, z);
-        });
-      case 2:
-        return function (z: V): R {
-          return f(x, y, z);
-        }
-      case 3:
-        return f(x, y, z);
-    }
-  }
-  return curriedFn;
+export function curry<T1, R>(fn: (t1: T1) => R, arity?: number):
+  CurriedFn1<T1, R>;
+export function curry<T1, T2, R>(fn: (t1: T1, t2: T2) => R, arity?: number):
+  CurriedFn2<T1, T2, R>;
+export function curry<T1, T2, T3, R>(fn: (t1: T1, t2: T2, t3: T3) => R, arity?: number):
+  CurriedFn3<T1, T2, T3, R>;
+export function curry<T1, T2, T3, T4, R>(fn: (t1: T1, t2: T2, t3: T3, t4: T4) => R, arity?: number):
+  CurriedFn4<T1, T2, T3, T4, R>;
+export function curry<T1, T2, T3, T4, T5, R>(fn: (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5) => R, arity?: number):
+  CurriedFn5<T1, T2, T3, T4, T5, R>;
+export function curry(fn: (...args: any[]) => any, arity?: number): (...args: any[]) => any {
+  const fnArity = typeof arity === 'number' ? arity : fn.length;
+  return wrapCurry.call(this, fn, fnArity, []);
 }
-
-// const add = curry2((a: number, b: number) => a + b);
-// console.log(add(1)(2));
-// console.log(add(1, 2));
-
-// const sum = curry3((a: number, b: number, c: number) => a + b + c);
-// console.log(sum(1)(2)(3));
-// console.log(sum(1, 2)(3));
-// console.log(sum(1)(2, 3));
-// console.log(sum(1, 2, 3));

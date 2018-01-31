@@ -1,6 +1,6 @@
 {
   "name": "simple-fp",
-  "version": "0.5.0",
+  "version": "2.0.0",
   "description": "A simple, small, no dependency functional programming library",
   "keywords": [
     "functional",
@@ -12,12 +12,16 @@
     "util",
     "fp"
   ],
-  "main": "fp.js",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "rollup src/index.js --output.format umd --name \"fp\" --output.file dist/index.js",
-    "build:watch": "rollup src/index.js --output.format umd --name \"fp\" --output.file dist/index.js -w",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "tsc": "tsc",
+    "tsc:watch": "tsc -w",
+    "rollup": "rollup build/index.js --output.format umd --name \"fp\" --output.file dist/index.js",
+    "rollup:watch": "rollup build/index.js --output.format umd --name \"fp\" --output.file dist/index.js -w",
+    "build": "npm run tsc && npm run rollup",
+    "build:watch": "npm run tsc:watch | npm run rollup:watch",
+    "test": "NODE_ENV=test npm run build && jest",
+    "test:watch": "NODE_ENV=test npm run build:watch | jest --watch"
   },
   "author": "Blake Tarter <blakertarter@gmail.com>",
   "repository": {
@@ -32,7 +36,8 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jest": "^21.7.0",
     "jest": "^18.1.0",
-    "rollup": "^0.55.1"
+    "rollup": "^0.55.1",
+    "typescript": "^2.6.2"
   },
   "dependencies": {}
 }

@@ -1,10 +1,11 @@
 import { reduce } from '../reduce/index';
+import { curry } from '../curry/index';
 
 interface predicateFn<T> {
   (x: T, y: number, z: T[]): boolean;
 }
 
-function _filter<T, U>(predicate: predicateFn<T>, data: T[]): U[] {
+function _filter<T>(predicate: predicateFn<T>, data: T[]): T[] {
   return reduce((newData, item, index) => {
     if (predicate(item, index, data)) {
       newData.push(item);
@@ -13,18 +14,9 @@ function _filter<T, U>(predicate: predicateFn<T>, data: T[]): U[] {
   }, [], data)
 };
 
-export function filter<T, U>(predicate: predicateFn<T>, data: T[]): U[];
-export function filter<T, U>(predicate: predicateFn<T>): (data: T[]) => U[];
-export function filter<T, U>(predicate: predicateFn<T>, data?: T[]): any {
-  switch (arguments.length) {
-    case 1:
-      return function curriedFn(data: T[]): U[] {
-        return _filter(predicate, data);
-      };
-    default:
-      return _filter(predicate, data);
-  }
-};
+interface filterFn {
+  <T>(projection: predicateFn<T>): (data: T[]) => T[];
+  <T>(projection: predicateFn<T>, data: T[]): T[];
+}
 
-// console.log(filter(a => a > 5, [1, 5, 10, 15]));
-// console.log(filter(a => a > 5)([1, 5, 10, 15]));
+export const filter: filterFn = curry(_filter, 2);
