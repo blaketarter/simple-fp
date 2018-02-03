@@ -1,8 +1,10 @@
 import { curry } from '../curry/index';
 import { reduce } from '../reduce/index';
+import { flip } from '../flip/index';
+import { prop } from '../prop/index';
 
 function _path<T>(propPath: string, data: T): T {
-  return reduce((val, prop) => val[prop], data, propPath.split('.'));
+  return reduce(flip(prop), data, propPath.split('.'));
 };
 
 interface pathFn {
