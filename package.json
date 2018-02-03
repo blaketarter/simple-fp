@@ -19,9 +19,9 @@
     "rollup": "rollup build/index.js --output.format umd --name \"fp\" --output.file dist/index.js",
     "rollup:watch": "rollup build/index.js --output.format umd --name \"fp\" --output.file dist/index.js -w",
     "build": "npm run tsc && npm run rollup",
-    "build:watch": "npm run tsc:watch | npm run rollup:watch",
+    "build:watch": "concurrently \"npm run tsc:watch\" \"npm run rollup:watch\"",
     "test": "NODE_ENV=test npm run build && jest",
-    "test:watch": "NODE_ENV=test npm run build:watch | jest --watch"
+    "test:watch": "NODE_ENV=test npm run test -- --watch"
   },
   "author": "Blake Tarter <blakertarter@gmail.com>",
   "repository": {
@@ -31,6 +31,7 @@
   "license": "MIT",
   "devDependencies": {
     "babel-eslint": "^7.1.1",
+    "concurrently": "^3.5.1",
     "eslint": "^4.16.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
