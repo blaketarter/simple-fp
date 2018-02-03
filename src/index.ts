@@ -7,3 +7,5 @@ export { compose } from './compose/index';
 export { take } from './take/index';
 export { skip } from './skip/index';
 export { path } from './path/index';
+export { prop } from './prop/index';
+export { flip } from './flip/index';
