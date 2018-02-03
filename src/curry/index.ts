@@ -35,7 +35,7 @@ interface CurriedFn5<T1, T2, T3,T4, T5, R> {
 
 function wrapCurry(fn: (...args: any[]) => any, argsToApply: number, appliedArgs: any[]): (...args: any[]) => any {
   return (...args: any[]) => {
-    if (args.length === argsToApply) {
+    if (args.length >= argsToApply) {
       return fn.apply(this, [...appliedArgs, ...args]);
     } else {
       return wrapCurry.call(this, fn, argsToApply - args.length, [...appliedArgs, ...args]);
