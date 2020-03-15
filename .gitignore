@@ -1,3 +1,7 @@
 node_modules
 coverage
-.npm-debug.log
+dist
+build
+*.log
+simple-fp-*.tgz
+.DS_Store

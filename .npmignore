@@ -1,5 +1,5 @@
 node_modules
-__tests__
+__old__tests__
 .eslintrc
 .npmignore
 .travis.yml
@@ -8,3 +8,11 @@ __tests__
 .eslintrc
 yarn.lock
 coverage
+babel.config.js
+tsconfig.json
+dist/__tests__
+build/__tests__
+src/__tests__
+.nvmrc
+.prettierrc
+example
