@@ -1,4 +1,4 @@
-const { reverse } = require("../dist")
+import { reverse } from "../dist"
 
 describe("reverse", () => {
   it("is defined", () => {

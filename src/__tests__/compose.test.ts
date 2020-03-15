@@ -1,4 +1,4 @@
-const { compose } = require("../dist")
+import { compose } from "../index"
 
 describe("compose", () => {
   it("is defined", () => {
@@ -6,9 +6,9 @@ describe("compose", () => {
   })
 
   it("calls each function", () => {
-    const first = jest.fn(a => [...a, "1st"])
-    const second = jest.fn(a => [...a, "2nd"])
-    const third = jest.fn(a => [...a, "3rd"])
+    const first = jest.fn((a: string[]) => [...a, "1st"])
+    const second = jest.fn((a: string[]) => [...a, "2nd"])
+    const third = jest.fn((a: string[]) => [...a, "3rd"])
 
     const places = compose(third, second, first)
 
@@ -20,9 +20,9 @@ describe("compose", () => {
   })
 
   it("calls each function in the correct order and returns the data", () => {
-    const first = a => [...a, "1st"]
-    const second = a => [...a, "2nd"]
-    const third = a => [...a, "3rd"]
+    const first = (a: string[]) => [...a, "1st"]
+    const second = (a: string[]) => [...a, "2nd"]
+    const third = (a: string[]) => [...a, "3rd"]
 
     const places = compose(third, second, first)
 

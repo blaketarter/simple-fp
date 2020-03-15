@@ -1,4 +1,4 @@
-const { take } = require("../dist")
+import { take } from "../index"
 
 describe("take", () => {
   it("is defined", () => {

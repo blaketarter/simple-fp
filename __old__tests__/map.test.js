@@ -1,4 +1,4 @@
-const { map } = require("../dist")
+import { map } from "../dist"
 
 describe("map", () => {
   it("is defined", () => {

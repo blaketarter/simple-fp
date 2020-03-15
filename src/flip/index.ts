@@ -6,7 +6,7 @@ function _flip(fn: Function, ...args: any[]): any {
 }
 
 interface FlipFn {
-  (fn: Function): (...args) => any
+  (fn: Function): (...args: any[]) => any
   (fn: Function, ...args: any[]): any
 }
 

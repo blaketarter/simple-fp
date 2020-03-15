@@ -1,11 +1,12 @@
-const { curry } = require("../dist")
+import { curry } from "../index"
 
 describe("curry", () => {
-  const arity1 = a => a
-  const arity2 = (a, b) => a + b
-  const arity3 = (a, b, c) => a + b + c
-  const arity4 = (a, b, c, d) => a + b + c + d
-  const arity5 = (a, b, c, d, e) => a + b + c + d + e
+  const arity1 = (a: string) => a
+  const arity2 = (a: string, b: string) => a + b
+  const arity3 = (a: string, b: string, c: string) => a + b + c
+  const arity4 = (a: string, b: string, c: string, d: string) => a + b + c + d
+  const arity5 = (a: string, b: string, c: string, d: string, e: string) =>
+    a + b + c + d + e
 
   it("is defined", () => {
     expect(curry).toBeDefined()

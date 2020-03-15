@@ -9,7 +9,7 @@ function _skip<T>(amount: number, data: T[]): T[] {
       }
       return newData
     },
-    [],
+    [] as T[],
     data,
   )
 }

@@ -9,7 +9,7 @@ function _take<T>(amount: number, data: T[]): T[] {
       }
       return newData
     },
-    [],
+    [] as T[],
     data,
   )
 }

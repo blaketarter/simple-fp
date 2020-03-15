@@ -1,4 +1,4 @@
-const { reduce } = require("../dist")
+import { reduce } from "../dist"
 
 describe("reduce", () => {
   it("is defined", () => {

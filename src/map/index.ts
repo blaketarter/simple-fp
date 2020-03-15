@@ -11,7 +11,7 @@ function _map<T, U>(projection: ProjectionFn<T, U>, data: T[]): U[] {
       newData.push(projection(item, index, data))
       return newData
     },
-    [],
+    [] as U[],
     data,
   )
 }

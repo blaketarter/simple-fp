@@ -1,12 +1,17 @@
 import { curry } from "../curry/index"
 
-function _prop<T>(propPath: string, data: T): T {
+function _prop<T extends { [key: string]: R }, R extends any>(
+  propPath: string,
+  data: T,
+): R {
   return data[propPath]
 }
 
 interface PropFn {
-  <T>(propPath: string): (data: T) => T
-  <T>(propPath: string, data: T): T
+  <T extends { [key: string]: R }, R extends any>(propPath: string): (
+    data: T,
+  ) => R
+  <T extends { [key: string]: R }, R extends any>(propPath: string, data: T): R
 }
 
 export const prop: PropFn = curry(_prop, 2)

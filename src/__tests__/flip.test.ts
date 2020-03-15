@@ -1,8 +1,8 @@
-const { flip } = require("../dist")
+import { flip } from "../index"
 
 describe("flip", () => {
-  const append2 = (a, b) => a + b
-  const append3 = (a, b, c) => append2(append2(a, b), c)
+  const append2 = (a: string, b: string) => a + b
+  const append3 = (a: string, b: string, c: string) => append2(append2(a, b), c)
 
   it("is defined", () => {
     expect(flip).toBeDefined()

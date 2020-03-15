@@ -13,7 +13,7 @@ function _filter<T>(predicate: PredicateFn<T>, data: T[]): T[] {
       }
       return newData
     },
-    [],
+    [] as T[],
     data,
   )
 }

@@ -16,12 +16,13 @@
   "scripts": {
     "tsc": "tsc",
     "tsc:watch": "tsc -w",
-    "rollup": "rollup build/index.js --output.format umd --name \"fp\" --output.file dist/index.js",
-    "rollup:watch": "rollup build/index.js --output.format umd --name \"fp\" --output.file dist/index.js -w",
+    "rollup": "rm -rf dist && rollup build/index.js --output.format umd --name \"fp\" --output.file dist/index.js",
+    "rollup:watch": "rm -rf dist && rollup build/index.js --output.format umd --name \"fp\" --output.file dist/index.js -w",
     "build": "npm run tsc && npm run rollup",
     "build:watch": "concurrently \"npm run tsc:watch\" \"npm run rollup:watch\"",
-    "test": "NODE_ENV=test npm run build && jest",
-    "test:watch": "NODE_ENV=test npm run test -- --watch"
+    "test": "NODE_ENV=test jest src",
+    "test:watch": "NODE_ENV=test npm run test -- --watch",
+    "test:build": "NODE_ENV=test npm run build && cp -R build/__tests__ dist/__tests__ && jest dist"
   },
   "author": "Blake Tarter <blakertarter@gmail.com>",
   "repository": {
@@ -30,9 +31,14 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "@babel/preset-typescript": "^7.8.3",
+    "@types/jest": "^25.1.4",
     "@typescript-eslint/eslint-plugin": "^2.22.0",
     "@typescript-eslint/parser": "^2.22.0",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^25.1.0",
     "concurrently": "^5.1.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "6.10.0",
