@@ -4,3 +4,4 @@ dist
 build
 *.log
 simple-fp-*.tgz
+.DS_Store
