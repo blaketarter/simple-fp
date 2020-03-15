@@ -1,21 +1,21 @@
-import { curry } from '../curry/index';
+import { curry } from "../curry/index"
 
-interface combinerFn<T, U> {
-  (acc: T, curr: U, index: number, data: U[]): T;
+interface CombinerFn<T, U> {
+  (acc: T, curr: U, index: number, data: U[]): T
 }
 
-function _reduce<T, U>(combiner: combinerFn<T, U>, initial: T, data: U[]) {
-  let newData = initial;
+function _reduce<T, U>(combiner: CombinerFn<T, U>, initial: T, data: U[]) {
+  let newData = initial
   for (let i = 0, ii = data.length; i < ii; i++) {
-    newData = combiner(newData, data[i], i, data);
+    newData = combiner(newData, data[i], i, data)
   }
-  return newData;
-};
-
-interface reduceFn {
-  <T, U>(combiner: combinerFn<T, U>): (initial: T) => (data: U[]) => T;
-  <T, U>(combiner: combinerFn<T, U>, initial: T): (data: U[]) => T;
-  <T, U>(combiner: combinerFn<T, U>, initial: T, data: U[]): T;
+  return newData
 }
 
-export const reduce: reduceFn = curry(_reduce, 3);
+interface ReduceFn {
+  <T, U>(combiner: CombinerFn<T, U>): (initial: T) => (data: U[]) => T
+  <T, U>(combiner: CombinerFn<T, U>, initial: T): (data: U[]) => T
+  <T, U>(combiner: CombinerFn<T, U>, initial: T, data: U[]): T
+}
+
+export const reduce: ReduceFn = curry(_reduce, 3)

@@ -1,12 +1,12 @@
-import { curry } from '../curry/index';
+import { curry } from "../curry/index"
 
 function _prop<T>(propPath: string, data: T): T {
-  return data[propPath];
-};
-
-interface propFn {
-  <T>(propPath: string): (data: T) => T;
-  <T>(propPath: string, data: T): T;
+  return data[propPath]
 }
 
-export const prop: propFn = curry(_prop, 2);
+interface PropFn {
+  <T>(propPath: string): (data: T) => T
+  <T>(propPath: string, data: T): T
+}
+
+export const prop: PropFn = curry(_prop, 2)

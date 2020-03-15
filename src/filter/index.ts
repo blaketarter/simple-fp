@@ -1,22 +1,26 @@
-import { reduce } from '../reduce/index';
-import { curry } from '../curry/index';
+import { curry } from "../curry/index"
+import { reduce } from "../reduce/index"
 
-interface predicateFn<T> {
-  (x: T, y: number, z: T[]): boolean;
+interface PredicateFn<T> {
+  (x: T, y: number, z: T[]): boolean
 }
 
-function _filter<T>(predicate: predicateFn<T>, data: T[]): T[] {
-  return reduce((newData, item, index) => {
-    if (predicate(item, index, data)) {
-      newData.push(item);
-    }
-    return newData;
-  }, [], data)
-};
-
-interface filterFn {
-  <T>(projection: predicateFn<T>): (data: T[]) => T[];
-  <T>(projection: predicateFn<T>, data: T[]): T[];
+function _filter<T>(predicate: PredicateFn<T>, data: T[]): T[] {
+  return reduce(
+    (newData, item, index) => {
+      if (predicate(item, index, data)) {
+        newData.push(item)
+      }
+      return newData
+    },
+    [],
+    data,
+  )
 }
 
-export const filter: filterFn = curry(_filter, 2);
+interface FilterFn {
+  <T>(projection: PredicateFn<T>): (data: T[]) => T[]
+  <T>(projection: PredicateFn<T>, data: T[]): T[]
+}
+
+export const filter: FilterFn = curry(_filter, 2)

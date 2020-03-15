@@ -1,9 +1,10 @@
 {
-    "compilerOptions": {
-        "target": "es5",
-        "module": "es2015",
-        "outDir": "./build/",
-        "rootDir": "./src/",
-        "strict": false,
-    }
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es2015",
+    "outDir": "./build/",
+    "rootDir": "./src/",
+    "strict": false,
+    "skipLibCheck": true
+  }
 }

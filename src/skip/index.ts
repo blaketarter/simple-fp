@@ -1,18 +1,22 @@
-import { reduce } from '../reduce/index';
-import { curry } from '../curry/index';
+import { curry } from "../curry/index"
+import { reduce } from "../reduce/index"
 
 function _skip<T>(amount: number, data: T[]): T[] {
-  return reduce((newData, item, index) => {
-    if (index > amount - 1) {
-      newData.push(item);
-    }
-    return newData;
-  }, [], data)
-};
-
-interface skipFn {
-  <T>(amount: number): (data: T[]) => T[];
-  <T>(amount: number, data: T[]): T[];
+  return reduce(
+    (newData, item, index) => {
+      if (index > amount - 1) {
+        newData.push(item)
+      }
+      return newData
+    },
+    [],
+    data,
+  )
 }
 
-export const skip: skipFn = curry(_skip, 2);
+interface SkipFn {
+  <T>(amount: number): (data: T[]) => T[]
+  <T>(amount: number, data: T[]): T[]
+}
+
+export const skip: SkipFn = curry(_skip, 2)
