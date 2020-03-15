@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/blaketarter/simple-fp.svg?branch=master)](https://travis-ci.org/blaketarter/simple-fp.svg?branch=master)
+[![Build Status](https://github.com/blaketarter/simple-fp/workflows/CI/badge.svg)](https://github.com/blaketarter/simple-fp/actions)
 
 # simple-fp
 
