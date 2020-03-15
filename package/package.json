@@ -17,16 +17,13 @@
   "scripts": {
     "tsc": "tsc",
     "tsc:watch": "tsc -w",
-    "lint": "eslint src/**/*.ts",
     "rollup": "rm -rf dist && rollup build/index.js --output.format umd --name \"fp\" --output.file dist/index.js",
     "rollup:watch": "rm -rf dist && rollup build/index.js --output.format umd --name \"fp\" --output.file dist/index.js -w",
     "build": "npm run tsc && npm run rollup",
     "build:watch": "concurrently \"npm run tsc:watch\" \"npm run rollup:watch\"",
     "test": "NODE_ENV=test jest src",
     "test:watch": "NODE_ENV=test npm run test -- --watch",
-    "test:build": "NODE_ENV=test npm run build && cp -R build/__tests__ dist/__tests__ && jest dist",
-    "test:ci": "npm run lint && npm run test && npm run test:build",
-    "prepush": "npm run test:ci"
+    "test:build": "NODE_ENV=test npm run build && cp -R build/__tests__ dist/__tests__ && jest dist"
   },
   "author": "Blake Tarter <blakertarter@gmail.com>",
   "repository": {
@@ -49,16 +46,10 @@
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jest": "^23.8.0",
     "eslint-plugin-prettier": "3.1.2",
-    "husky": "^4.2.3",
     "jest": "^25.1.0",
     "prettier": "^1.19.1",
     "rollup": "^2.0.6",
     "typescript": "^3.8.3"
   },
-  "dependencies": {},
-  "husky": {
-    "hooks": {
-      "pre-push": "npm run prepush"
-    }
-  }
+  "dependencies": {}
 }
