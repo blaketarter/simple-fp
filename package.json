@@ -10,7 +10,8 @@
     "server",
     "client",
     "util",
-    "fp"
+    "fp",
+    "typescript"
   ],
   "main": "dist/index.js",
   "scripts": {
